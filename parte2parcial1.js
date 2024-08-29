@@ -2,75 +2,77 @@
 //Modificar el algoritmo de árboles binarios, implementar una función para calcular la altura de un árbol.
 
 // Clase para representar una persona en el árbol genealógico
-class Persona {
-    constructor(nombreCompleto, fechaNacimiento) {
-        this.nombreCompleto = nombreCompleto;
-        this.fechaNacimiento = fechaNacimiento;
-        this.hijos = [];
+class Person {
+    constructor(fullName, birthDate) {
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+        this.children = [];
     }
 
-    agregarHijo(hijo) {
-        this.hijos.push(hijo);
+    addChild(child) {
+        this.children.push(child);
     }
-}
-
-// Función para calcular la altura del árbol
-function calcularAltura(persona) {
-    if (!persona) return 0;
-    if (persona.hijos.length === 0) return 1;
-
-    let alturas = persona.hijos.map(hijo => calcularAltura(hijo));
-    return Math.max(...alturas) + 1;
 }
 
 // Funciones para imprimir el árbol en diferentes órdenes
-function imprimirPreOrden(persona) {
-    if (!persona) return;
-    console.log(`${persona.nombreCompleto} (${persona.fechaNacimiento})`);
-    persona.hijos.forEach(hijo => imprimirPreOrden(hijo));
+function printPreOrder(person) {
+    if (!person) return;
+    console.log(`${person.fullName} (${person.birthDate})`);
+    person.children.forEach(child => printPreOrder(child));
 }
 
-function imprimirPostOrden(persona) {
-    if (!persona) return;
-    persona.hijos.forEach(hijo => imprimirPostOrden(hijo));
-    console.log(`${persona.nombreCompleto} (${persona.fechaNacimiento})`);
+function printPostOrder(person) {
+    if (!person) return;
+    person.children.forEach(child => printPostOrder(child));
+    console.log(`${person.fullName} (${person.birthDate})`);
 }
 
-function imprimirEnOrden(persona) {
-    if (!persona || persona.hijos.length === 0) {
-        if (persona) {
-            console.log(`${persona.nombreCompleto} (${persona.fechaNacimiento})`);
+function printInOrder(person) {
+    if (!person || person.children.length === 0) {
+        if (person) {
+            console.log(`${person.fullName} (${person.birthDate})`);
         }
         return;
     }
-    const mitad = Math.floor(persona.hijos.length / 2);
-    for (let i = 0; i < mitad; i++) {
-        imprimirEnOrden(persona.hijos[i]);
+    const mid = Math.floor(person.children.length / 2);
+    for (let i = 0; i < mid; i++) {
+        printInOrder(person.children[i]);
     }
-    console.log(`${persona.nombreCompleto} (${persona.fechaNacimiento})`);
-    for (let i = mitad; i < persona.hijos.length; i++) {
-        imprimirEnOrden(persona.hijos[i]);
+    console.log(`${person.fullName} (${person.birthDate})`);
+    for (let i = mid; i < person.children.length; i++) {
+        printInOrder(person.children[i]);
     }
 }
 
+// Función para calcular la altura de un árbol
+function calculateHeight(person) {
+    if (!person) return 0;
+    let maxChildHeight = 0;
+    person.children.forEach(child => {
+        maxChildHeight = Math.max(maxChildHeight, calculateHeight(child));
+    });
+    return 1 + maxChildHeight;
+}
+
 // Ejemplo de uso
-let abuelo = new Persona("Juan Pérez", "01-01-1940");
-let padre = new Persona("Miguel Pérez", "01-01-1970");
-let hijo1 = new Persona("Emilia Pérez", "01-01-2000");
-let hijo2 = new Persona("Jorge Pérez", "01-01-2005");
+let grandfather = new Person("John Doe", "01-01-1940");
+let father = new Person("Michael Doe", "01-01-1970");
+let child1 = new Person("Emily Doe", "01-01-2000");
+let child2 = new Person("James Doe", "01-01-2005");
 
-abuelo.agregarHijo(padre);
-padre.agregarHijo(hijo1);
-padre.agregarHijo(hijo2);
+grandfather.addChild(father);
+father.addChild(child1);
+father.addChild(child2);
 
-console.log("Preorden:");
-imprimirPreOrden(abuelo);
+console.log("Pre-order:");
+printPreOrder(grandfather);
 
-console.log("\nPostorden:");
-imprimirPostOrden(abuelo);
+console.log("\nPost-order:");
+printPostOrder(grandfather);
 
-console.log("\nEn orden:");
-imprimirEnOrden(abuelo);
+console.log("\nIn-order:");
+printInOrder(grandfather);
 
-console.log("\nAltura del árbol:");
-console.log(calcularAltura(abuelo));
+// Cálculo de la altura del árbol
+const height = calculateHeight(grandfather);
+console.log(`\nLa altura del árbol es: ${height}`);
