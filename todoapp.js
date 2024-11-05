@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { TodoReducer } from './components/TodoReducer';
-import Header from './components/Encabezado';
+import Header from './components/encabezado';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
