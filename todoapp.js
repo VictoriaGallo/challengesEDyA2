@@ -1,40 +1,35 @@
-import React from 'react';
-import { useReducer } from 'react';
-import { TodoReducer } from './TodoReducer';
+import React, { useReducer } from 'react';
+import { TodoReducer } from './components/TodoReducer';
+import Header from './components/Encabezado';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
 const initialState = [
   {
     id: new Date().getTime(),
     description: 'Hacer los challenges',
-    done: false
-  }
+    done: false,
+  },
 ];
 
 export const TodoApp = () => {
-  const [todos, dispatchTodo] = useReducer(TodoReducer, initialState);
+  const [todos, dispatch] = useReducer(TodoReducer, initialState);
+
+  const handleAddTodo = (newTodo) => {
+    dispatch({ type: 'add', payload: newTodo });
+  };
+
+  const handleDelete = (id) => {
+    dispatch({ type: 'delete', payload: id });
+  };
 
   return (
-    <div>
-      <h1>TodoApp: 10, <small>Pendientes: 2</small></h1>
-      <hr />
+    <>
+      <Header todos={todos} />
       <div className="row">
-        <div className="col-7">
-          <ul className="list-group">
-            <li className="list-group-item d-flex justify-content-between">
-              <span className="align-self-center">Item 1</span>
-              <button className="btn btn-danger">Borrar</button>
-            </li>
-          </ul>
-        </div>
-        <div className="col-5">
-          <h4>Agregar TODO</h4>
-          <hr />
-          <form>
-            <input type="text" className="form-control" />
-            <button className="btn btn-outline-primary mt-1">Agregar</button>
-          </form>
-        </div>
+        <TodoList todos={todos} handleDelete={handleDelete} />
+        <TodoForm handleAddTodo={handleAddTodo} />
       </div>
-    </div>
+    </>
   );
 };
