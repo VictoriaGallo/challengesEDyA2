@@ -15,7 +15,8 @@ npm start
 ## :open_file_folder: What is the structure?
 
 A quick look at the folder structure of this project.
- .
+
+    .
     ├── node_modules
     ├── plublic
     ├───src
