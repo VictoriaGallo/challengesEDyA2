@@ -1,26 +1,5 @@
-Laura Victoria Gallo Payana 2220903
-
-ReactJS project codes for data structure and algorithms
-
-### Step 1: Create folder with npm
-```bash
-npx create react app my-app
-```
-```bash
-cd my-app
-```
-```bash
-npm start
-```
-## :open_file_folder: What is the structure?
-
-A quick look at the folder structure of this project.
-
-    .
-    ├── node_modules
-    ├── plublic
-    ├───src
-    ├───.gitgnore
-    ├───package-lock.json
-    ├───package.json
-    ├───README.md
+# CHALLENGE 14
+1. Implement Login with email and password by using Redux and firebase
+2. Implement Login with Google, by using Redux and firebase
+3. Implement Logout button from Firebase
+4. use useMemo hook to watch status from state, to check if user is authenticated or not. When user is authenticated, disable register and login buttons
