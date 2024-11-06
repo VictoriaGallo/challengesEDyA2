@@ -1,26 +1,5 @@
-Laura Victoria Gallo Payana 2220903
-
-ReactJS project codes for data structure and algorithms
-
-### Step 1: Create folder with npm
-```bash
-npx create react app my-app
-```
-```bash
-cd my-app
-```
-```bash
-npm start
-```
-## :open_file_folder: What is the structure?
-
-A quick look at the folder structure of this project.
-
-    .
-    ├── node_modules
-    ├── plublic
-    ├───src
-    ├───.gitgnore
-    ├───package-lock.json
-    ├───package.json
-    ├───README.md
+# CHALLENGE 10
+1. Implement delete button to erase aTODO by clicking on it
+2. Implement toggle decoration with a css style with line through when TODO is done or not, by clicking on SPAN tag from TodoItem
+3. Implement an **useTODO custom hook** to improve the reading of TodoApp component
+4. Implement **countTodos and countPendingTodos** in the above custom hook to show them in TodoApp
