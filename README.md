@@ -1,26 +1,4 @@
-Laura Victoria Gallo Payana 2220903
-
-ReactJS project codes for data structure and algorithms
-
-### Step 1: Create folder with npm
-```bash
-npx create react app my-app
-```
-```bash
-cd my-app
-```
-```bash
-npm start
-```
-## :open_file_folder: What is the structure?
-
-A quick look at the folder structure of this project.
-
-    .
-    ├── node_modules
-    ├── plublic
-    ├───src
-    ├───.gitgnore
-    ├───package-lock.json
-    ├───package.json
-    ├───README.md
+# CHALLENGE 11
+1. Create a new shared component **NavComponent.jsx** to handle navigation bar.
+2. Use classes/styles to show a nice menu
+3. Use different styles to highlight active route
