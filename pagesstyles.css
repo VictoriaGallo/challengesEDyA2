@@ -1,0 +1,26 @@
+.page-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.page-container h1 {
+    color: #d41212;
+}
+
+.page-container p {
+    font-size: 16px;
+    color: #555;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
